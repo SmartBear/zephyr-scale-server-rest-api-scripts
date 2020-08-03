@@ -1,0 +1,17 @@
+{
+  "name": "custom-fields",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "create": "node src/index.js",
+    "create:localhost": "node src/index.js --host http://localhost:2990/jira --projectKey MM --username admin --password admin",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "0.19.2",
+    "yargs": "15.4.1"
+  }
+}
