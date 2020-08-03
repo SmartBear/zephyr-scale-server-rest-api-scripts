@@ -11,7 +11,7 @@ const init = async () => {
     console.log('Starting to create custom fields.')
     const services = new Services(JIRA_URL, USERNAME, PASSWORD)
     await services.healthCheck();
-    // await services.enableTM4JProject(JIRA_PROJECT_KEY);
+    await services.enableTM4JProject(JIRA_PROJECT_KEY);
     await services.createCustomFields(JIRA_PROJECT_KEY, customFields);
 }
 
