@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "create": "node src/index.js",
-    "create:localhost": "node src/index.js --host http://localhost:2990/jira --projectKey MM --username admin --password admin",
+    "create:localhost": "node src/index.js --host http://localhost:2990/jira --projectKey DEF --username admin --password admin",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
