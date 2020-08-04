@@ -18,20 +18,20 @@ const init = async () => {
 
 const validate = () => {
     if (!argv.projectKey) {
-        print('projectKey')
+        logMissingRequiredParameterAndExitWithError('projectKey')
     }
     if (!argv.host) {
-        print('host')
+        logMissingRequiredParameterAndExitWithError('host')
     }
     if (!argv.username) {
-        print('username')
+        logMissingRequiredParameterAndExitWithError('username')
     }
     if (!argv.password) {
-        print('password')
+        logMissingRequiredParameterAndExitWithError('password')
     }
 }
 
-const print = (parameter) => {
+const logMissingRequiredParameterAndExitWithError = (parameter) => {
     console.log(`${parameter} is required`);
     console.log('Try to run the following command replacing the CAPITALIZE parameters: \n' +
         'npm create --host http://YOUR_JIRA_HOST --projectKey KEY --username USERNAME --password PASSWORD')

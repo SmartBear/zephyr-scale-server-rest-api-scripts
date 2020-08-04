@@ -6,7 +6,7 @@ First of all it's necessary to install the library dependencies. Run the followi
 npm install
 ```
 
-Edit the file `customFields.js` to create your owns custom fields. Look at the [TM4J api docs](https://support.smartbear.com/tm4j-server/api-docs/v1/) for more information.
+Edit the file `customFields.js` to create your own custom fields. Look at the [TM4J api docs](https://support.smartbear.com/tm4j-server/api-docs/v1/) for more information.
 
 Run the following command adjusting the necessary info.
 ```

@@ -17,7 +17,7 @@ const customFields = [
     },
     {
         name: "Owner",
-        type : "USER_LIST",
+        type : type.USER_LIST,
         category : category.TEST_CASE,
     },
     {
