@@ -22,8 +22,8 @@ const validateArgs = () => {
 
 const logMissingRequiredParameterAndExitWithError = (parameter) => {
     console.log(`${parameter} is required`);
-    console.log('Try to run the following command replacing the CAPITALIZE parameters: \n' +
-        'npm create --host http://YOUR_JIRA_HOST --projectKey KEY --username USERNAME --password PASSWORD')
+    console.log('Try to run the following command replacing the CAPITALIZED parameters: \n' +
+        ' --host http://YOUR_JIRA_HOST --projectKey KEY --username USERNAME --password PASSWORD')
     process.exit(1)
 }
 
