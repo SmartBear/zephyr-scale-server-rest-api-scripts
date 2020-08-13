@@ -16,7 +16,7 @@ class Services {
             await axios.get(this.jiraUrl + '/rest/atm/1.0/healthcheck', this.options);
             console.log(`The TM4J api is running...`);
         } catch (error) {
-            this.printError(error);
+            this.printErrorAndExit(error);
         }
     }
 
@@ -29,7 +29,7 @@ class Services {
             await axios.post(this.jiraUrl + '/rest/atm/1.0/project', project, this.options);
             console.log(`The project with key: ${project.projectKey} was created.`);
         } catch (error) {
-            this.printError(error);
+            this.printErrorAndExit(error);
         }
     }
 
@@ -49,26 +49,26 @@ class Services {
                 return this.createCustomFieldOption(customField);
             }
         } catch (error) {
-            this.printError(error)
+            this.printErrorAndExit(error)
         }
     }
 
     async createCustomFieldOption (customField) {
         try {
             for (const customFieldOption of customField.customFieldOptions) {
-                customFieldOption.customFieldId = customField.id;
-                const response = await axios.post(this.jiraUrl + '/rest/atm/1.0/customfieldoption', customFieldOption, this.options)
+                const response = await axios.post(`${this.jiraUrl}/rest/atm/1.0/customfield/${customField.id}/option`, customFieldOption, this.options)
                 console.log(`Custom field option: ${customFieldOption.name} was created with id: ${response.data.id}`);
             }
         } catch (error) {
-            this.printError(error)
+            this.printErrorAndExit(error)
         }
     }
 
-    printError (error) {
+    printErrorAndExit (error) {
+        console.log(`Error code: ${error.code}`)
         console.log(error && error.response && error.response.data
             ? ( `Response status : ${error.response.status} \nResponse message: ${error.response.data.message} ` )
-            : `Error code: ${error.code}`)
+            : ( `Response status : ${error.response.status} \nResponse data: ${error.response.data} ` ))
         process.exit(1)
     }
 }
