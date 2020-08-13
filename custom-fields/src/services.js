@@ -66,8 +66,8 @@ class Services {
     }
 
     printError (error) {
-        console.log(error && error.response
-            ? ( `Response status : ${error.response.status} \nResponse data: ${error.response.data}` )
+        console.log(error && error.response && error.response.data
+            ? ( `Response status : ${error.response.status} \nResponse message: ${error.response.data.message} ` )
             : `Error code: ${error.code}`)
         process.exit(1)
     }
