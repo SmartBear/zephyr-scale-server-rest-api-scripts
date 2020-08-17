@@ -1,10 +1,9 @@
 {
-  "name": "custom-fields",
+  "name": "tm4j-server-scripts",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "create": "node src/index.js",
-    "create:localhost": "node src/index.js --host http://localhost:2990/jira --projectKey DEF --username admin --password admin",
+    "customfields:create": "node custom-fields/createCustomFields.js",
+    "project:create": "node project/createProject.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
