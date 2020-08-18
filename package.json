@@ -1,14 +1,13 @@
 {
-  "name": "tm4j-server-scripts",
+  "name": "tm4j-server-rest-api-scripts",
   "version": "1.0.0",
   "scripts": {
-    "customfields:create": "node custom-fields/createCustomFields.js",
-    "project:create": "node project/createProject.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "projects:create": "node projects/createProjects.js",
+    "customFields:create": "node customFields/createCustomFields.js"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "SmartBear",
+  "license": "MIT",
+  "description": "TM4J Server REST API Scripts",
   "dependencies": {
     "axios": "0.19.2",
     "yargs": "15.4.1"

@@ -1,67 +1,78 @@
 const axios = require('axios').default;
-const { JIRA_URL, USERNAME, PASSWORD } = require('./arguments')
+const { JIRA_URL, USERNAME, PASSWORD } = require('./arguments');
 
 const OPTIONS = {
-    auth: {
-        username: USERNAME,
-        password: PASSWORD
-    }
+  auth: {
+    username: USERNAME,
+    password: PASSWORD,
+  },
+};
+
+const API_V1 = `${JIRA_URL}/rest/atm/1.0`;
+
+async function healthCheck() {
+  try {
+    await axios.get(`${API_V1}/healthcheck`, OPTIONS);
+    console.log('Running health check...');
+  } catch (error) {
+    failWith(error);
+  }
 }
 
-async function healthCheck () {
-    try {
-        await axios.get(JIRA_URL + '/rest/atm/1.0/healthcheck', OPTIONS);
-        console.log(`The TM4J api is running...`);
-    } catch (error) {
-        printErrorAndExit(error);
-    }
+async function createProject(project) {
+  try {
+    await axios.post(`${API_V1}/project`, project, OPTIONS);
+    console.log(`Project with key: ${project.projectKey} was created.`);
+  } catch (error) {
+    failWith(error);
+  }
 }
 
-async function createTM4JProject (projectKey, enabled) {
-    const project = {
-        projectKey: projectKey,
-        enabled: enabled
-    }
-    try {
-        await axios.post(JIRA_URL + '/rest/atm/1.0/project', project, OPTIONS);
-        console.log(`The project with key: ${project.projectKey} was created.`);
-    } catch (error) {
-        printErrorAndExit(error);
-    }
+async function createCustomField(customField) {
+  try {
+    const response = await axios.post(`${API_V1}/customfield`, customField, OPTIONS);
+    console.log(
+      `Custom field: ${customField.name} was created with id: ${response.data.id} on project ${customField.projectKey}`
+    );
+    return response.data.id;
+  } catch (error) {
+    failWith(error);
+  }
 }
 
-async function createCustomField (projectKey, customField){
-    customField.projectKey = projectKey;
-    try {
-        const response = await axios.post(JIRA_URL + '/rest/atm/1.0/customfield', customField, OPTIONS)
-        console.log(`Custom field: ${customField.name} was created with id: ${response.data.id}`);
-        return response.data.id;
-    } catch (error) {
-        printErrorAndExit(error)
-    }
+async function createCustomFieldOption(customFieldId, customFieldOption) {
+  try {
+    const response = await axios.post(
+      `${API_V1}/customfield/${customFieldId}/option`,
+      customFieldOption,
+      OPTIONS
+    );
+    console.log(
+      `Custom field option: ${customFieldOption.name} was created with id: ${response.data.id}`
+    );
+    return response.data.id;
+  } catch (error) {
+    failWith(error);
+  }
 }
 
-async function createCustomFieldOption (customFieldId, customFieldOption) {
-    try {
-        const response = await axios.post(`${JIRA_URL}/rest/atm/1.0/customfield/${customFieldId}/option`, customFieldOption, OPTIONS)
-        console.log(`Custom field option: ${customFieldOption.name} was created with id: ${response.data.id}`);
-        return response.data.id;
-    } catch (error) {
-        printErrorAndExit(error)
+function failWith(error) {
+  if (error.response) {
+    console.log('Response status:', error.response.status);
+    if (error.response.data) {
+      console.log('Response data:', error.response.data);
     }
-}
+  } else {
+    console.log('Error message', error.message);
+    console.log('Error code', error.code);
+  }
 
-function printErrorAndExit (error) {
-    console.log(`Error code: ${error.code}`)
-    console.log(error && error.response && error.response.data
-        ? ( `Response status : ${error.response.status} \nResponse message: ${error.response.data.message} ` )
-        : ( `Response status : ${error.response.status} \nResponse data: ${error.response.data} ` ))
-    process.exit(1);
+  process.exit(1);
 }
 
 module.exports = {
-    healthCheck: healthCheck,
-    createTM4JProject: createTM4JProject,
-    createCustomField: createCustomField,
-    createCustomFieldOption: createCustomFieldOption
-}
+  healthCheck: healthCheck,
+  createProject: createProject,
+  createCustomField: createCustomField,
+  createCustomFieldOption: createCustomFieldOption,
+};
