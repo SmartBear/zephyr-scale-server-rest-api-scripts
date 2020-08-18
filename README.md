@@ -1,45 +1,55 @@
-# TM4J Server Scripts #
+# TM4J Server REST API Scripts
 
-This repository contains scripts to automate some tasks related to TM4J Server via public API. Those scripts are executed by 
-[NodeJs](https://nodejs.org/). Each subdirectory as the instructions in their readme file to manipulate some resources.
+Example scripts to automate tasks in TM4J Server via the [REST API](https://support.smartbear.com/tm4j-server/api-docs/v1/).
 
-After that you cloned the project you must go to the root folder of the project and run the following command to install the dependencies. 
+The examples are intentionally simple to provide a quick start for REST API users.
+
+We recommend you to fork this repository and change it to meet your specifications.
+
+See the [TM4J API Docs](https://support.smartbear.com/tm4j-server/api-docs/v1/) for more information about the API usage.
+
+# Requirements
+
+The scripts are based on [Node.js](https://nodejs.org/), please make sure you have the latest Node.js LTS version installed.
+
+After forking or cloning the project, go to the root folder and run the following command to install the dependencies:
+
 ```
 npm install
 ```
-## Project ##
 
-You can create a TM4J project using this tool.
+In the sections below you can see the current available scripts.
 
-### Create TM4J Project ###
-Fist of all you need to create a Jira project and then your are able to create a TM4J project running the following command:
-```
-npm run project:create -- --host http://YOUR_HOST --projectKey PROJECT_KEY --username USERNAME --password PASSWORD
-```
+## Projects
 
-If everything is fine the message `TM4J Project created successfully.` will be printed at the end of the process.
+TM4J resources are linked to Jira projects, so in order to use TM4J, first create the projects in Jira and then create the TM4J projects.
 
+### Create TM4J Projects
 
-## Custom Fields ##
+First, open the template file `projects/resources/projects.js` and edit it to meet your requirements.
 
-You can create custom fields fast and easily following the next steps.
-
-### Create custom fields ###
-
-
-To create our own customs fields you need to edit the file `custom-fields/resources/customFields.js` to create your own custom fields. 
-Look at the [TM4J api docs](https://support.smartbear.com/tm4j-server/api-docs/v1/) for more information.
-
-Then run the following command adjusting the arguments
+Then, create the TM4J projects running the following command:
 
 ```
-npm run customfields:create -- --host http://YOUR_HOST --projectKey PROJECT_KEY --username USERNAME --password PASSWORD
+npm run projects:create -- \
+  --host https://YOUR_JIRA_HOST \
+  --username JIRA_USERNAME \
+  --password JIRA_PASSWORD
 ```
 
-If everything is fine the message `Custom fields created successfully.` will be printed at the end of the process: 
+## Custom Fields
 
+TM4J supports Custom Fields for different resources, like Test Cases, Test Cycles and more.
 
+### Create Custom Fields
 
+First, open the template file `customFields/resources/customFields.js` and edit it to meet your requirements.
 
+Then, create the Custom Fields running the following command:
 
-
+```
+npm run customFields:create -- \
+  --host http://YOUR_JIRA_HOST \
+  --username JIRA_USERNAME \
+  --password JIRA_PASSWORD
+```
