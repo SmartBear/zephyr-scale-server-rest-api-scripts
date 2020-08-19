@@ -6,7 +6,7 @@
     "customFields:create": "node customFields/createCustomFields.js"
   },
   "author": "SmartBear",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "description": "TM4J Server REST API Scripts",
   "dependencies": {
     "axios": "0.19.2",
