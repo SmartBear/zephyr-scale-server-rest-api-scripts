@@ -32,7 +32,7 @@ Then, create the TM4J projects running the following command:
 
 ```
 npm run projects:create -- \
-  --host https://YOUR_JIRA_HOST \
+  --host https://JIRA_HOST \
   --username JIRA_USERNAME \
   --password JIRA_PASSWORD
 ```
@@ -49,7 +49,7 @@ Then, create the Custom Fields running the following command:
 
 ```
 npm run customFields:create -- \
-  --host http://YOUR_JIRA_HOST \
+  --host http://JIRA_HOST \
   --username JIRA_USERNAME \
   --password JIRA_PASSWORD
 ```
