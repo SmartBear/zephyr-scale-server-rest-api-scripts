@@ -1,12 +1,12 @@
-# TM4J Server REST API Scripts
+# Zephyr Scale Server REST API Scripts
 
-Example scripts to automate tasks in TM4J Server via the [REST API](https://support.smartbear.com/tm4j-server/api-docs/v1/).
+Example scripts to automate tasks in Zephyr Scale Server via the [REST API](https://support.smartbear.com/zephyr-scale-server/api-docs/v1/).
 
 The examples are intentionally simple to provide a quick start for REST API users.
 
 We recommend you to fork this repository and change it to meet your specifications.
 
-See the [TM4J API Docs](https://support.smartbear.com/tm4j-server/api-docs/v1/) for more information about the API usage.
+See the [Zephyr Scale API Docs](https://support.smartbear.com/zephyr-scale-server/api-docs/v1/) for more information about the API usage.
 
 # Requirements
 
@@ -22,13 +22,13 @@ In the sections below you can see the current available scripts.
 
 ## Projects
 
-TM4J resources are linked to Jira projects, so in order to use TM4J, first create the projects in Jira and then create the TM4J projects.
+Zephyr Scale resources are linked to Jira projects, so in order to use Zephyr Scale, first create the projects in Jira and then create the Zephyr Scale projects.
 
-### Create TM4J Projects
+### Create Zephyr Scale Projects
 
 First, open the template file `projects/resources/projects.js` and edit it to meet your requirements.
 
-Then, create the TM4J projects running the following command:
+Then, create the Zephyr Scale projects running the following command:
 
 ```
 npm run projects:create -- \
@@ -39,7 +39,7 @@ npm run projects:create -- \
 
 ## Custom Fields
 
-TM4J supports Custom Fields for different resources, like Test Cases, Test Cycles and more.
+Zephyr Scale supports Custom Fields for different resources, like Test Cases, Test Cycles and more.
 
 ### Create Custom Fields
 
